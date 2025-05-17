@@ -40,7 +40,7 @@ def get_weather_data(city, state, api_key):
 #--- Calculate Energy Output ----
 def calculate_energy_output(panel_power, efficiency, irradiance,num_panels,sunlight_hours):
   total_kw = (panel_power * num_panels) / 1000
-  output = total kw * efficiency * irradiance * sunlight_hours
+  output = total_kw * efficiency * irradiance * sunlight_hours
   return output
   
 #---- Main Exwcution ---
