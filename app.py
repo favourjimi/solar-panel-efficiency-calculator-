@@ -13,12 +13,12 @@ st.markdown("Estimate your solar panel efficiency using real-time weather data."
 #--- Inputs ----
 city = st.text_input("Enter the city name:", "New York")
 api_key = st.text_input("Enter your API key:", type="password")
-panel_power = st.number_input("Enter the power of your solar panel (in watts):", min_value=10,max_value=7,value=400, step=0.1)
+panel_power = st.number_input("Enter the power of your solar panel (in watts):", min_value=10,max_value=700,value=400, step=0.1)
 efficiency = st.slider("Panel Efficiency (%)",10,25,18)
 
 #--- Get Coordinates from city Name---
 def get_coordinates(city, api_key):
-  url = f"http://api.openweathermap.org/geo/1.0/direct?q={city},{state},US&limit=1&appid={api_key}"
+  url = f"http://api.openweathermap.org/geo/1.0/direct?q={city},US&limit=1&appid={api_key}"
   response = requests.get(url)
   data = response.json()
   if data:
