@@ -1,4 +1,3 @@
-
 import streamlit as st
 import requests 
 import plotly.graph_objs as go
@@ -17,7 +16,7 @@ panel_power = st.number_input("Enter the power of your solar panel (in watts):",
 efficiency = st.slider("Panel Efficiency (%)",10,25,18)
 
 #--- Get Coordinates from city Name---
-def get_coordinates(city, api_key):
+def get_coordinates(city,api_key):
   url = f"http://api.openweathermap.org/geo/1.0/direct?q={city},US&limit=1&appid={api_key}"
   response = requests.get(url)
   data = response.json()
@@ -43,7 +42,7 @@ def calculate_energy_output(panel_power, efficiency, irradiance,num_panels,sunli
   
 #---- Main Exwcution ---
 if city and api_key:
-  lat, lon = get_coordinates(city, state, api_key)
+  lat, lon = get_coordinates(city, api_key)
   if lat is not None and lon is not None:
     weather_data = get_weather_data(city, api_key)
     if weather_data:
@@ -76,7 +75,7 @@ if city and api_key:
     else:
       st.error("couldn't fetch weather data. Please check your API key and try again.")
   else:
-      st.error("Invalid city or state name. Please try again.")
+      st.error("Invalid city name. Please try again.")
 else:
   st.warning("Please enter all required information.")
  
