@@ -50,16 +50,16 @@ if city and state and api_key:
     weather_data = get_weather_data(city, state, api_key)
     if weather_data:
       # Approximate daily sunlight hours and irradiance from cloud cover
-      cloud cover = weather_data['clouds']['all']
+      cloud_cover = weather_data['clouds']['all']
       temperature = weather_data['main']['temp']
       base_irradiance = 5.0 #Average for moderate sunlight
       irradiance = base_irradiance * (1 - cloud_cover/100) #simple approximation
-      sunlight_hours =12*(1-cloud cover/100)
+      sunlight_hours =12*(1-cloud_cover/100)
 
-      daily__output = calculate_energy_output(panel_power, efficiency, irradiance, num_panels, sunlight_hours)
+      daily_output = calculate_energy_output(panel_power, efficiency, irradiance, num_panels, sunlight_hours)
       monthly_output = daily_output * 30
       annual_output = monthly_output * 12
-      co2_saved= daily_output *0.92
+      co2_saved = daily_output * 0.92
       
       #Display Results
       st.header("🔋😊Estimated Output")
